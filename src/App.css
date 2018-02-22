@@ -1,0 +1,63 @@
+
+
+.App {
+  font-family: 'Roboto', sans-serif;
+}
+.header-container {
+  display: flex;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+  margin-left: 425px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+table {
+  display: flex;
+  justify-content: center;
+}
+
+.price-estimate-container {
+  display: flex;
+  justify-content: center;
+}
+
+.exam-cells {
+  width: 75%;
+  text-align: start;
+  height: 50px;
+  font-size: 18px;
+}
+
+.price-container {
+  width: 140px;
+  height: 140px;
+  border-bottom: 10px solid rgba(36, 160, 236, 0.5);
+  display: flex;
+  align-self: flex-end;
+  margin: 0 0 70px 135px;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #234082;
+}
+
+.clear-btn {
+  display: flex;
+  align-self: flex-end;
+}
+
+/* aside {
+  border: 1px solid black;
+  height: 500px;
+  width: 200px;
+  display: flex;
+  align-self: flex-start;
+} */
