@@ -21,4 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /LaboratorioClnico
+/src/SmallLogo.jpg
+/src/SmallLogo.png
 
