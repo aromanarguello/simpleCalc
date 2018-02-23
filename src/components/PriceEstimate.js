@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton'
 import {
     Table,
     TableBody,
@@ -8,8 +8,8 @@ import {
     TableHeaderColumn,
     TableRow,
     TableRowColumn,
-  } from 'material-ui/Table';
-import App from '../App';
+  } from 'material-ui/Table'
+  import App from '../Containers/App'
 
 const style = {
     margin: 12,
