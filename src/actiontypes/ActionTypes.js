@@ -1,0 +1,1 @@
+export const ADD_TO_ESTIMATOR = 'ADD_TO_ESTIMATOR'
