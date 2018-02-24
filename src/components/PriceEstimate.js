@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton'
 import {
@@ -43,6 +44,25 @@ export default class PriceEstimate extends Component {
         }
       ]
 
+    state = {
+        total: 0
+    }
+
+    static propTypes = {
+        onChange: PropTypes.func.isRequired,
+    }
+
+    // event handler, when price button is pressed this functions sets the new state
+    // if the state is not 0, it will add to the existing number with the result having
+    // 2 significant digits
+    onChange(e) {
+        if (this.state.total != 0) {
+            this.setState({ total: (Number(this.state.total) + Number(e.target.innerText)).toFixed(2) })
+        } else {
+            this.setState({ total: e.target.innerText })
+        }
+    };
+
     render() {
         return (
             <MuiThemeProvider>
@@ -69,7 +89,7 @@ export default class PriceEstimate extends Component {
                                         primary={true} 
                                         style={style}
                                         type="submit"                                
-                                        onClick={this.props.onChange}/>
+                                        onClick={this.onChange}/>
                                         $ 
                                 </TableRowColumn>                               
                             </TableRow>

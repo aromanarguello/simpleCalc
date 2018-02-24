@@ -1,8 +1,14 @@
 import * as ActionTypes from '../actiontypes/ActionTypes'
 
-export const addPrices = price => {
+export const updateEstimator = total => {
     return {
-        type: ActionTypes.ADD_TO_ESTIMATOR,
-        price
+        type: ActionTypes.UPDATE_ESTIMATOR,
+        total
+    }
+}
+
+export const clearTotal = () => {
+    return {
+        type: ActionTypes.CLEAR_TOTAL
     }
 }
