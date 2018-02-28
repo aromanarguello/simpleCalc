@@ -7,9 +7,13 @@ const intialState = [
     }
 ]
 
-export default function Action(state=intialState, action ) {
+export default function Action( state=intialState, action ) {
     switch(action.type) {
+        case ActionTypes.CLEAR_TOTAL:
+        this.state.total = 0
         case ActionTypes.UPDATE_ESTIMATOR:
-            
+        this.state.total = this.state.total + 2
+        }
+
+
     }
-}

@@ -16,7 +16,8 @@ const style = {
     margin: 12,
   };
 
-export default class PriceEstimate extends Component { 
+export default class PriceEstimate extends Component {
+
     prices = [
         {
           name: "Biometria Hematica",
@@ -50,6 +51,11 @@ export default class PriceEstimate extends Component {
 
     static propTypes = {
         onChange: PropTypes.func.isRequired,
+        index: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        key: PropTypes.string.isRequired,
+        updateEstimator: PropTypes.func.isRequired,
     }
 
     // event handler, when price button is pressed this functions sets the new state
@@ -88,8 +94,8 @@ export default class PriceEstimate extends Component {
                                         // backgroundColor="#234082"
                                         primary={true} 
                                         style={style}
-                                        type="submit"                                
-                                        onClick={this.onChange}/>
+                                        type="submit"   
+                                        onClick={this.props.updateEstimator}/>
                                         $ 
                                 </TableRowColumn>                               
                             </TableRow>
@@ -101,3 +107,12 @@ export default class PriceEstimate extends Component {
         )
     }
 }
+
+// App.propTypes = {
+//     index: PropTypes.number.isRequired,
+//     name: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     key: PropTypes.string.isRequired,
+//     updateEstimator: PropTypes.func.isRequired,
+//     onChange: PropTypes.func.isRequired,
+// }
