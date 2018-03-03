@@ -45,10 +45,6 @@ export default class PriceEstimate extends Component {
         }
       ]
 
-    state = {
-        total: 0
-    }
-
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         index: PropTypes.number.isRequired,
@@ -56,18 +52,19 @@ export default class PriceEstimate extends Component {
         price: PropTypes.number.isRequired,
         key: PropTypes.string.isRequired,
         updateEstimator: PropTypes.func.isRequired,
+        Action: PropTypes.func.isRequired
     }
 
     // event handler, when price button is pressed this functions sets the new state
     // if the state is not 0, it will add to the existing number with the result having
     // 2 significant digits
-    onChange(e) {
-        if (this.state.total != 0) {
-            this.setState({ total: (Number(this.state.total) + Number(e.target.innerText)).toFixed(2) })
-        } else {
-            this.setState({ total: e.target.innerText })
-        }
-    };
+    // onChange(e) {
+    //     if (this.state.total != 0) {
+    //         this.setState({ total: (Number(this.state.total) + Number(e.target.innerText)).toFixed(2) })
+    //     } else {
+    //         this.setState({ total: e.target.innerText })
+    //     }
+    // };
 
     render() {
         return (
@@ -107,12 +104,3 @@ export default class PriceEstimate extends Component {
         )
     }
 }
-
-// App.propTypes = {
-//     index: PropTypes.number.isRequired,
-//     name: PropTypes.string.isRequired,
-//     price: PropTypes.number.isRequired,
-//     key: PropTypes.string.isRequired,
-//     updateEstimator: PropTypes.func.isRequired,
-//     onChange: PropTypes.func.isRequired,
-// }

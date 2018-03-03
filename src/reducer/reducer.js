@@ -1,19 +1,28 @@
 import * as ActionTypes from '../actiontypes/ActionTypes'
+import prices from '../components/PriceEstimate'
 
-const intialState = [
-    {
-        name: '',
+const initialState = [
+    {   
+        name: 'Biometria',
         total: 0
     }
 ]
 
-export default function Action( state=intialState, action ) {
+export default function Action( state=initialState, action ) {
     switch(action.type) {
-        case ActionTypes.CLEAR_TOTAL:
-        this.state.total = 0
         case ActionTypes.UPDATE_ESTIMATOR:
-        this.state.total = this.state.total + 2
-        }
-
-
+            return [
+                {
+                    total: 60
+                }
+            ];
+        case ActionTypes.CLEAR_TOTAL:
+            return [
+                {
+                    total: 0
+                }
+            ]
+        
+        default: {return state};
     }
+}
