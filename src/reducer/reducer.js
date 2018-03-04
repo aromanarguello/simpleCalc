@@ -2,21 +2,28 @@ import * as ActionTypes from '../actiontypes/ActionTypes'
 import prices from '../components/PriceEstimate'
 import data from '../data/data'
 
+
 const initialState = [
     {   
         name: '',
-        total: 100
+        total: []
+    },
+    {
+        add: ''
     }
 ]
 
+
+
 export default function Action( state=initialState, action ) {
+    
 
     switch(action.type) {
         case ActionTypes.UPDATE_ESTIMATOR:
             return [
                 ...state,
                 {
-                    total: state[0].total + state[0].total
+                    
                 }
             ];
         case ActionTypes.CLEAR_TOTAL:
@@ -34,13 +41,12 @@ export default function Action( state=initialState, action ) {
         case ActionTypes.ADD_PRICES:
         return [
             {
-                total: state[0].total + state[0].total
-            }
-            ,
-            console.log(state[0].total)
+                ...state[0],
+                total: action.price
+            },
         ]
 
         
         default: {return state};
     }
-}
+}   

@@ -43,7 +43,7 @@ class App extends Component {
       <div className="header-container">
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
-          {this.props.total}
+          {console.log(this.props.total)}
         </div>
          { clearComponent }
       </div>
@@ -61,7 +61,7 @@ function mapStateToProps (state)  {
 
   return {
       name: state[0].name,
-      total: state[0].total
+      total: state[0].total,
   };
 }
 export default connect(mapStateToProps)(App)

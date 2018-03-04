@@ -25,8 +25,8 @@ export const dataCarry = (price) => {
 }
 
 export const addPrices = price => {
-    console.log(price)
     return{
         type: ActionTypes.ADD_PRICES,
+        price,
     }
 }

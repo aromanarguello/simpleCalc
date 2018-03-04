@@ -22,17 +22,14 @@ export default class PriceEstimate extends Component {
     
     constructor(props) {
         super(props);
-        
-        this.data = {
-            _data: {
+        this._data = {
                 itemName: '',
                 itemPrice: '',
             }
-        };
     }
     
     // imports the JSON object from data.js file and assisngs it to the variable price
-    // Data is an array thus should be treated as like.
+    // Data is an array thus should be treated as like.s
     prices = Data
 
     static propTypes = {
@@ -58,8 +55,8 @@ export default class PriceEstimate extends Component {
                     {this.prices.map((item, key) => {
                         // this will store the price and name of clicked item
                         // on the _data object above for use in other components.ß
-                        {this.data._data.itemName = item.name}
-                        {this.data._data.itemPrice = item.price}
+                        {this._data.itemName = item.name}
+                        {this._data.itemPrice = item.price}
                         return (
                             <TableRow key = {key} >
                                 <TableRowColumn 
@@ -74,7 +71,7 @@ export default class PriceEstimate extends Component {
                                         primary={true} 
                                         style={style}
                                         type="submit"   
-                                        onClick={this.props.addPrices}
+                                        onClick={() =>this.props.addPrices(item.price)}
                                         />
                                         $ 
                                 </TableRowColumn>                               
