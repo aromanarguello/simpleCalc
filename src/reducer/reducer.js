@@ -4,18 +4,19 @@ import data from '../data/data'
 
 const initialState = [
     {   
-        name: 'Biometria',
-        total: 0
+        name: '',
+        total: 100
     }
 ]
 
 export default function Action( state=initialState, action ) {
+
     switch(action.type) {
         case ActionTypes.UPDATE_ESTIMATOR:
             return [
                 ...state,
                 {
-                    total: state[0].total
+                    total: state[0].total + state[0].total
                 }
             ];
         case ActionTypes.CLEAR_TOTAL:
@@ -32,11 +33,13 @@ export default function Action( state=initialState, action ) {
             ]
         case ActionTypes.ADD_PRICES:
         return [
-            ...state,
             {
-                name: state[0].prices
+                total: state[0].total + state[0].total
             }
+            ,
+            console.log(state[0].total)
         ]
+
         
         default: {return state};
     }

@@ -19,22 +19,31 @@ const style = {
 
 export default class PriceEstimate extends Component {
     /** Constructor to store exam name and price to export to store */
+    
     constructor(props) {
-        super(props)
-        this._data = {
-            itemName: '',
-            itemPrice: '',
-         }
-}
-
-
+        super(props);
+        
+        this.data = {
+            _data: {
+                itemName: '',
+                itemPrice: '',
+            }
+        };
+    }
+    
+    // imports the JSON object from data.js file and assisngs it to the variable price
+    // Data is an array thus should be treated as like.
     prices = Data
 
     static propTypes = {
+        data: PropTypes.object.isRequired,
         updateEstimator: PropTypes.func.isRequired,
+        addPrices: PropTypes.func.isRequired,
+        dataCarry: PropTypes.func.isRequired,
         Action: PropTypes.func.isRequired,
         _data: PropTypes.array.isRequired
     }
+
     render() {
         return (
             <MuiThemeProvider>
@@ -47,11 +56,14 @@ export default class PriceEstimate extends Component {
                     </TableHeader>
                     <TableBody>
                     {this.prices.map((item, key) => {
-                        {this._data.itemName = item.name}
+                        // this will store the price and name of clicked item
+                        // on the _data object above for use in other components.ß
+                        {this.data._data.itemName = item.name}
+                        {this.data._data.itemPrice = item.price}
                         return (
                             <TableRow key = {key} >
                                 <TableRowColumn 
-                                    className="exam-cells" >
+                                    className="exam-cells">
                                     {item.name}
                                     
                                 </TableRowColumn>
@@ -62,7 +74,7 @@ export default class PriceEstimate extends Component {
                                         primary={true} 
                                         style={style}
                                         type="submit"   
-                                        onClick={this.props.updateEstimator}
+                                        onClick={this.props.addPrices}
                                         />
                                         $ 
                                 </TableRowColumn>                               

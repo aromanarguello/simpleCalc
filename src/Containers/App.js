@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     console.log()
-    const { dispatch, prices } = this.props;
+    const { dispatch, total } = this.props;
     const updateEstimator = bindActionCreators(ActionCreators.updateEstimator, dispatch);
     const clearTotal = bindActionCreators(ActionCreators.clearTotal, dispatch);
     const dataCarry = bindActionCreators(ActionCreators.dataCarry, dispatch);
@@ -37,9 +37,6 @@ class App extends Component {
       const clearComponent = 
       <Clear clearTotal={clearTotal} />
       
-      const totalComponent = (state) => {
-        this.props.total
-      }
 
     return (
       <div className="App">
@@ -61,10 +58,10 @@ class App extends Component {
 }
 
 function mapStateToProps (state)  {
+
   return {
       name: state[0].name,
       total: state[0].total
-  }
-};
-
+  };
+}
 export default connect(mapStateToProps)(App)

@@ -5,7 +5,6 @@ import Data from '../components/PriceEstimate'
 export const updateEstimator = (total) => {
     return {
         type: ActionTypes.UPDATE_ESTIMATOR,
-        total
     }
 }
 
@@ -16,17 +15,17 @@ export const clearTotal = state => {
     }
 }
 
-export const dataCarry = (name, price) => {
+export const dataCarry = (price) => {
     return {
         type: ActionTypes.DATA_COMM,
         state: {
-            name: name,
-            price: price
+            payload: price
         }
     }
 }
 
-export const addPrices = state => {
+export const addPrices = price => {
+    console.log(price)
     return{
         type: ActionTypes.ADD_PRICES,
     }
