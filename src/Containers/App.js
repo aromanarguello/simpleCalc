@@ -23,11 +23,15 @@ class App extends Component {
     console.log()
     const { dispatch, prices } = this.props;
     const updateEstimator = bindActionCreators(ActionCreators.updateEstimator, dispatch);
-    const clearTotal = bindActionCreators(ActionCreators.clearTotal, dispatch)
+    const clearTotal = bindActionCreators(ActionCreators.clearTotal, dispatch);
+    const dataCarry = bindActionCreators(ActionCreators.dataCarry, dispatch);
+    const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch)
 
     const priceComponent = 
       <PriceEstimate 
         updateEstimator={updateEstimator}
+        dataCarry={dataCarry}
+        addPrices={addPrices}
       />
 
       const clearComponent = 
@@ -58,8 +62,8 @@ class App extends Component {
 
 function mapStateToProps (state)  {
   return {
-      name: state.map(x  => x.name),
-      total: state.map(x => x.total)
+      name: state[0].name,
+      total: state[0].total
   }
 };
 

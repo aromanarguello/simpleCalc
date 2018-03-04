@@ -11,61 +11,30 @@ import {
     TableRowColumn,
   } from 'material-ui/Table'
   import App from '../Containers/App'
+  import Data from '../data/data'
 
 const style = {
     margin: 12,
   };
 
 export default class PriceEstimate extends Component {
+    /** Constructor to store exam name and price to export to store */
+    constructor(props) {
+        super(props)
+        this._data = {
+            itemName: '',
+            itemPrice: '',
+         }
+}
 
-    prices = [
-        {
-          name: "Biometria Hematica",
-          price: 7.20
-        },
-        {
-          name: "PSA",
-          price: 16.20
-        },
-        {
-          name: "Acido Urico",
-          price: 6.00
-        },
-        {
-          name: "Albumina",
-          price: 4.00
-        },
-        {
-          name: "Amilasa",
-          price: 15.00
-        },
-        {
-          name: "Bilirrubina",
-          price: 20.50
-        }
-      ]
+
+    prices = Data
 
     static propTypes = {
-        onChange: PropTypes.func.isRequired,
-        index: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        key: PropTypes.string.isRequired,
         updateEstimator: PropTypes.func.isRequired,
-        Action: PropTypes.func.isRequired
+        Action: PropTypes.func.isRequired,
+        _data: PropTypes.array.isRequired
     }
-
-    // event handler, when price button is pressed this functions sets the new state
-    // if the state is not 0, it will add to the existing number with the result having
-    // 2 significant digits
-    // onChange(e) {
-    //     if (this.state.total != 0) {
-    //         this.setState({ total: (Number(this.state.total) + Number(e.target.innerText)).toFixed(2) })
-    //     } else {
-    //         this.setState({ total: e.target.innerText })
-    //     }
-    // };
-
     render() {
         return (
             <MuiThemeProvider>
@@ -78,21 +47,23 @@ export default class PriceEstimate extends Component {
                     </TableHeader>
                     <TableBody>
                     {this.prices.map((item, key) => {
+                        {this._data.itemName = item.name}
                         return (
                             <TableRow key = {key} >
                                 <TableRowColumn 
-                                    className="exam-cells">
+                                    className="exam-cells" >
                                     {item.name}
+                                    
                                 </TableRowColumn>
                                 <TableRowColumn className="price-cells" >
                                     <RaisedButton 
-                                        label={item.price.toFixed(2)}
-                                        // labelColor="white"
-                                        // backgroundColor="#234082"
+                                        key={item.id}
+                                        label={item.price}
                                         primary={true} 
                                         style={style}
                                         type="submit"   
-                                        onClick={this.props.updateEstimator}/>
+                                        onClick={this.props.updateEstimator}
+                                        />
                                         $ 
                                 </TableRowColumn>                               
                             </TableRow>

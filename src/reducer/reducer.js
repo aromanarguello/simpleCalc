@@ -1,5 +1,6 @@
 import * as ActionTypes from '../actiontypes/ActionTypes'
 import prices from '../components/PriceEstimate'
+import data from '../data/data'
 
 const initialState = [
     {   
@@ -12,8 +13,9 @@ export default function Action( state=initialState, action ) {
     switch(action.type) {
         case ActionTypes.UPDATE_ESTIMATOR:
             return [
+                ...state,
                 {
-                    total: 60
+                    total: state[0].total
                 }
             ];
         case ActionTypes.CLEAR_TOTAL:
@@ -22,6 +24,19 @@ export default function Action( state=initialState, action ) {
                     total: 0
                 }
             ]
+        case ActionTypes.DATA_COMM:
+            return [
+                {
+                    state
+                }
+            ]
+        case ActionTypes.ADD_PRICES:
+        return [
+            ...state,
+            {
+                name: state[0].prices
+            }
+        ]
         
         default: {return state};
     }
