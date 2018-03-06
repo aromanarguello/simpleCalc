@@ -33,12 +33,9 @@ export default class PriceEstimate extends Component {
     prices = Data
 
     static propTypes = {
-        data: PropTypes.object.isRequired,
         updateEstimator: PropTypes.func.isRequired,
         addPrices: PropTypes.func.isRequired,
-        dataCarry: PropTypes.func.isRequired,
-        Action: PropTypes.func.isRequired,
-        _data: PropTypes.array.isRequired
+        dataCarryName: PropTypes.func.isRequired,
     }
 
     render() {
@@ -53,10 +50,6 @@ export default class PriceEstimate extends Component {
                     </TableHeader>
                     <TableBody>
                     {this.prices.map((item, key) => {
-                        // this will store the price and name of clicked item
-                        // on the _data object above for use in other components.ß
-                        {this._data.itemName = item.name}
-                        {this._data.itemPrice = item.price}
                         return (
                             <TableRow key = {key} >
                                 <TableRowColumn 
@@ -70,10 +63,11 @@ export default class PriceEstimate extends Component {
                                         label={item.price}
                                         primary={true} 
                                         style={style}
-                                        type="submit"   
-                                        onClick={() =>this.props.addPrices(item.price)}
+                                        type="submit"
+                                        // functions allows me to pass in the (item price as parameter)   
+                                        onClick={() =>this.props.addPrices(item.price, item.name)}
                                         />
-                                        $ 
+                                          
                                 </TableRowColumn>                               
                             </TableRow>
                         )

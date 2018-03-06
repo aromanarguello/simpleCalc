@@ -8,6 +8,7 @@ import '../SmallLogo.png'
 import PriceEstimate from '../components/PriceEstimate'
 import Clear from '../components/Clear'
 import Reducer from '../reducer/reducer'
+import ExamList from '../components/ExamList'
 
 
 class App extends Component {
@@ -24,44 +25,51 @@ class App extends Component {
     const { dispatch, total } = this.props;
     const updateEstimator = bindActionCreators(ActionCreators.updateEstimator, dispatch);
     const clearTotal = bindActionCreators(ActionCreators.clearTotal, dispatch);
-    const dataCarry = bindActionCreators(ActionCreators.dataCarry, dispatch);
+    const dataCarryName = bindActionCreators(ActionCreators.dataCarry, dispatch);
     const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch)
 
     const priceComponent = 
       <PriceEstimate 
         updateEstimator={updateEstimator}
-        dataCarry={dataCarry}
+        dataCarryName={dataCarryName}
         addPrices={addPrices}
       />
 
       const clearComponent = 
       <Clear clearTotal={clearTotal} />
       
-
+       
     return (
       <div className="App">
       <div className="header-container">
+        <aside>
+          <ExamList dataCarryName={this.props.name +  this.props.total} />
+        </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
-          {console.log(this.props.total)}
+        {/* displays the total sum of added prices */}
+          {this.props.total}
         </div>
          { clearComponent }
       </div>
         <div className="main-container">
           { priceComponent }
         </div>
-        {/* <aside></aside> */}
+    
       </div>
     );
   };
 
+
 }
 
-function mapStateToProps (state)  {
-
+function mapStateToProps (state, name){
   return {
+      ...state[0],
+      total: Number(state[0].total).toFixed(2),
       name: state[0].name,
-      total: state[0].total,
   };
 }
+
+
 export default connect(mapStateToProps)(App)

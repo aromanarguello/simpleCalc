@@ -12,9 +12,7 @@ const style = {
 
 export default class Clear extends Component {
     static propTypes = {
-        onClear: PropTypes.func.isRequired,
         clearTotal: PropTypes.func.isRequired,
-        items: PropTypes.object.isRequired
     }
 
     // event handler, when 'Limpiar' button is pressed this functions sets the state to 0

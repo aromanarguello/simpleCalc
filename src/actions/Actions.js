@@ -11,22 +11,22 @@ export const updateEstimator = (total) => {
 export const clearTotal = state => {
     return {
         type: ActionTypes.CLEAR_TOTAL,
-        state: { total: 0 }
+        state: { total: ''}
     }
 }
 
-export const dataCarry = (price) => {
+export const dataCarry = (name) => {
     return {
         type: ActionTypes.DATA_COMM,
-        state: {
-            payload: price
-        }
+        name
     }
 }
 
-export const addPrices = price => {
+export const addPrices = (price,name) => {
     return{
         type: ActionTypes.ADD_PRICES,
         price,
+        name
     }
 }
+
