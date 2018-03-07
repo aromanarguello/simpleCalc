@@ -58,16 +58,17 @@ table {
 }
 
 aside {
-  border: 1px solid black;
   height: 500px;
   width: 280px;
   display: flex;
   position: fixed;
+  margin-left: 10px;
 }
 
 .side-exam-view {
   width: 100%;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .exam-list-names {

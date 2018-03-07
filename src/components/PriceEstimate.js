@@ -20,14 +20,6 @@ const style = {
 export default class PriceEstimate extends Component {
     /** Constructor to store exam name and price to export to store */
     
-    constructor(props) {
-        super(props);
-        this._data = {
-                itemName: '',
-                itemPrice: '',
-            }
-    }
-    
     // imports the JSON object from data.js file and assisngs it to the variable price
     // Data is an array thus should be treated as like.s
     prices = Data

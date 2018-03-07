@@ -25,7 +25,8 @@ export default function Action( state= initialState, action ) {
         case ActionTypes.CLEAR_TOTAL:
             return [
                 {
-                    total: ''
+                    ...state[0],
+                    total: state[0].total
                 }
             ]
         case ActionTypes.DATA_COMM:
@@ -41,6 +42,11 @@ export default function Action( state= initialState, action ) {
                     total: Number(state[0].total) + (action.price),
                     name: action.name
                 }
+            ]
+        case ActionTypes.REMOVE_EXAMS:
+            return [
+                ...state[0].name.slice(0, action.index),
+                ...state[0].name.slice(action.index, + 1)
             ]
         default: {return state};
     }

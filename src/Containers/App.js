@@ -21,12 +21,13 @@ class App extends Component {
 
 
   render() {
-    console.log()
+    console.log(this.props.name)
     const { dispatch, total } = this.props;
     const updateEstimator = bindActionCreators(ActionCreators.updateEstimator, dispatch);
     const clearTotal = bindActionCreators(ActionCreators.clearTotal, dispatch);
     const dataCarryName = bindActionCreators(ActionCreators.dataCarry, dispatch);
-    const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch)
+    const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch);
+    const removeExams = bindActionCreators(ActionCreators.removeExams, dispatch)
 
     const priceComponent = 
       <PriceEstimate 
@@ -43,7 +44,9 @@ class App extends Component {
       <div className="App">
       <div className="header-container">
         <aside>
-          <ExamList dataCarryName={this.props.name +  this.props.total} />
+          <ExamList 
+            dataCarryName={this.props.name}
+            removeExams={removeExams} />
         </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>

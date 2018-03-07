@@ -30,3 +30,10 @@ export const addPrices = (price,name) => {
     }
 }
 
+export const removeExams = index => {
+    return {
+        type: ActionTypes.REMOVE_EXAMS,
+        index
+    }
+}
+
