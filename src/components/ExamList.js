@@ -14,27 +14,21 @@ const style = {
 export default class ExamList extends Component {
 
     static propTypes = {
-        dataCarryName: PropTypes.string.isRequired,
+        dataCarryName: PropTypes.array.isRequired,
         removeExams: PropTypes.func.isRequired,
         total: PropTypes.number.isRequired,
+        data: PropTypes.array.isRequired
     };
 
-    constructor(props) {
-        super(props);
-        this.names = [];
-    }
-    
     
     render() {
-        
-        // {this.names.push(this.props.dataCarryName)}
         return (
             <MuiThemeProvider>
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
                 {this.props.total.toFixed(2)}
-                {this.props.dataCarryName}
+                {this.props.dataCarryName} <button onClick={() => this.props.removeExams(this.props.data)} >X</button>
                 {/* {this.names.map((i, k) => {
                     return(
                         <ul key={k}

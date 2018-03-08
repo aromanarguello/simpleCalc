@@ -30,11 +30,10 @@ export const addPrices = (price, name) => {
     }
 }
 
-export const removeExams = (index, name) => {
+export const removeExams = state => {
     return {
         type: ActionTypes.REMOVE_EXAMS,
-        index,
-        name
+        state
     }
 }
 

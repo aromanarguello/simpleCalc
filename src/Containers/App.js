@@ -42,7 +42,9 @@ class App extends Component {
             dataCarryName={names}
             removeExams={removeExams}
             total={sum}
+            data={this.props.state}
             />
+            {console.log('STATE:' + this.props.state)}
         </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
