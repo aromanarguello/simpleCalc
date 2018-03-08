@@ -14,11 +14,6 @@ export default class Clear extends Component {
     static propTypes = {
         clearTotal: PropTypes.func.isRequired,
     }
-
-    // event handler, when 'Limpiar' button is pressed this functions sets the state to 0
-    onClear() {
-        return { total: 0 }
-    };
       
     render() {
         return (
@@ -30,7 +25,7 @@ export default class Clear extends Component {
                     labelColor="white"
                     primary={false} 
                     style={style}
-                    onClick={this.props.clearTotal}
+                    onClick={() => this.props.clearTotal()}
                     />
             </div>
             </MuiThemeProvider>

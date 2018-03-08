@@ -47,7 +47,7 @@ export default class PriceEstimate extends Component {
                                 <TableRowColumn 
                                     className="exam-cells">
                                     {item.name}
-                                    
+                                    {console.log(typeof(item.price))}
                                 </TableRowColumn>
                                 <TableRowColumn className="price-cells" >
                                     <RaisedButton 

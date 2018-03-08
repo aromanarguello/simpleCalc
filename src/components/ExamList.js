@@ -15,39 +15,31 @@ export default class ExamList extends Component {
 
     static propTypes = {
         dataCarryName: PropTypes.string.isRequired,
-        removeExams: PropTypes.func.isRequired
+        removeExams: PropTypes.func.isRequired,
+        total: PropTypes.string.isRequired,
     };
 
     constructor(props) {
         super(props);
         this.names = [];
-
     }
-
-    // removeExams = (index) => {
-    //     this.names.slice(0, index),
-    //     this.names.slice(index, + 1)
-    // }
-
     
     render() {
         
         {this.names.push(this.props.dataCarryName)}
+        {console.log(this.names)}
         return (
             <MuiThemeProvider>
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
-                {}
+                {this.props.total}
                 {this.names.map((i, k) => {
                     return(
                         <ul key={k}
                              className="exam-list-names">
-                            <li  ><TextField 
-                            hintText={i}
-                            underlineShow={true}
-                            style={style} />
-                            <button onClick={() => this.props.removeExams(k)}>X</button>
+                            <li key={k}>
+                            <button onClick={() => this.props.removeExams(( i.length, {i}))}> {i} - X</button>
                             </li>
                             <Divider />
                         </ul>

@@ -46,11 +46,14 @@ class App extends Component {
         <aside>
           <ExamList 
             dataCarryName={this.props.name}
-            removeExams={removeExams} />
+            removeExams={removeExams}
+            total={this.props.total}
+            />
         </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
         {/* displays the total sum of added prices */}
+        {console.log(typeof(this.props.total))}
           {this.props.total}
         </div>
          { clearComponent }
@@ -68,7 +71,6 @@ class App extends Component {
 
 function mapStateToProps (state, name){
   return {
-      ...state[0],
       total: Number(state[0].total).toFixed(2),
       name: state[0].name,
   };
