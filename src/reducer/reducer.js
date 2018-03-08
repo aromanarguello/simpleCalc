@@ -3,24 +3,14 @@ import prices from '../components/PriceEstimate'
 import data from '../data/data'
 
 
-const initialState = [
-    {   
-        name: '',
-        total: '',
-    }
-]
+const initialState = []
 
 
 
 export default function Action( state = initialState, action ) {
 
     switch(action.type) {
-        case ActionTypes.UPDATE_ESTIMATOR:
-            return [
-                {
-                    ...state
-                }
-            ];
+
         case ActionTypes.CLEAR_TOTAL:
             return [
                 {
@@ -31,22 +21,14 @@ export default function Action( state = initialState, action ) {
         case ActionTypes.DATA_NAME:
             return [
                 {
-                    name: state[0].name
+                    name: state
                 }
             ]
         case ActionTypes.ADD_PRICES:
-            return   [{ 
-                total: Number(state[0].total + action.price),
-                name: action.name
-             }
-            ]
+            return state.concat({ name: action.name, price: action.price })
             
         case ActionTypes.REMOVE_EXAMS:
-           return[
-                ...state[0].name.slice(0, action.index),
-                ...state[0].name.slice(action.index + 1)
-           ]
-
+           return state.filter(exam => exam.name === action.name)
         default: {return state};
     }
 } 

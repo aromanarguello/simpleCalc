@@ -13,13 +13,6 @@ import ExamList from '../components/ExamList'
 
 class App extends Component {
 
-  // static propTypes = {
-  //   prices: PropTypes.array.isRequired,
-  //   Action: PropTypes.func.isRequired,
-  //   Store: PropTypes.func.isRequired
-  // }
-
-
   render() {
     console.log(this.props.name)
     const { dispatch, total } = this.props;
@@ -39,22 +32,23 @@ class App extends Component {
       const clearComponent = 
       <Clear clearTotal={clearTotal} />
       
-       
+       const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
+       const names = this.props.state.map((exam, index) => <p key={index}>{exam.name}</p>)
     return (
       <div className="App">
       <div className="header-container">
         <aside>
           <ExamList 
-            dataCarryName={this.props.name}
+            dataCarryName={names}
             removeExams={removeExams}
-            total={this.props.total}
+            total={sum}
             />
         </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
         {/* displays the total sum of added prices */}
-        {console.log(typeof(this.props.total))}
-          {this.props.total}
+        {sum.toFixed(2)}
+        
         </div>
          { clearComponent }
       </div>
@@ -71,8 +65,7 @@ class App extends Component {
 
 function mapStateToProps (state, name){
   return {
-      total: Number(state[0].total).toFixed(2),
-      name: state[0].name,
+      state
   };
 }
 

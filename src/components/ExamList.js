@@ -16,7 +16,7 @@ export default class ExamList extends Component {
     static propTypes = {
         dataCarryName: PropTypes.string.isRequired,
         removeExams: PropTypes.func.isRequired,
-        total: PropTypes.string.isRequired,
+        total: PropTypes.number.isRequired,
     };
 
     constructor(props) {
@@ -24,27 +24,31 @@ export default class ExamList extends Component {
         this.names = [];
     }
     
+    
     render() {
         
-        {this.names.push(this.props.dataCarryName)}
-        {console.log(this.names)}
+        // {this.names.push(this.props.dataCarryName)}
         return (
             <MuiThemeProvider>
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
-                {this.props.total}
-                {this.names.map((i, k) => {
+                {this.props.total.toFixed(2)}
+                {this.props.dataCarryName}
+                {/* {this.names.map((i, k) => {
                     return(
                         <ul key={k}
                              className="exam-list-names">
                             <li key={k}>
-                            <button onClick={() => this.props.removeExams(( i.length, {i}))}> {i} - X</button>
+                            <TextField 
+                            disabled={true}
+                            defaultValue={i}/>
+                            <button onClick={() => this.props.removeExams(({i}))}>X</button>
                             </li>
                             <Divider />
                         </ul>
                     )
-                })}
+                })} */}
             </Paper>
         </div>
         </MuiThemeProvider>
@@ -52,13 +56,3 @@ export default class ExamList extends Component {
         
     }
 }
-
-// function mapStateToProps (state,action) {
-//     return {
-//         name: state[0].name,
-//         price: state[0].total,
-//         state: state
-//     }
-// }
-
-// export default connect(mapStateToProps)(ExamList);
