@@ -37,10 +37,10 @@ export const removeExams = state => {
     }
 }
 
-export const removeIndividualExams = (state) => {
+export const removeIndividualExams = (index) => {
     return {
         type: ActionTypes.REMOVE_INDVIDUAL_EXAM,
-        state
+        index
     }
 }
 

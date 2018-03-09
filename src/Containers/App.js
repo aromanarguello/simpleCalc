@@ -7,7 +7,6 @@ import '../App.css';
 import '../SmallLogo.png'
 import PriceEstimate from '../components/PriceEstimate'
 import Clear from '../components/Clear'
-import Reducer from '../reducer/reducer'
 import ExamList from '../components/ExamList'
 
 
@@ -21,17 +20,13 @@ class App extends Component {
     const dataCarryName = bindActionCreators(ActionCreators.dataCarry, dispatch);
     const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch);
     const removeExams = bindActionCreators(ActionCreators.removeExams, dispatch)
-    const clearCart = bindActionCreators(ActionCreators.removeIndividualExams, dispatch)
+    const removeIndividualExams = bindActionCreators(ActionCreators.removeIndividualExams, dispatch)
 
      // sum adds each exam through reduce to produce a total
      const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
      // names maps to produce each name on the side list when triggered by add price
      const names = this.props.state.map((exam, index) =>
-     <p key={index}> {exam.name} <span onClick={() => removeExams(exam)}> --X</span> </p>)
-    // used to clear reset total
-     const clear = this.props.state.map(( exam, index) => {
-       {() => removeExams(exam)}
-     })
+     <p key={index}> {exam.name} <span onClick={() => removeIndividualExams(exam.index)}> --X</span> </p>)
 
     const priceComponent = 
       <PriceEstimate 
@@ -43,18 +38,19 @@ class App extends Component {
     const clearComponent = 
       <Clear clearTotal={clearTotal} />
 
-
+    const examListComponent = 
+      <ExamList 
+        dataCarryName={names}
+        removeExams={removeExams}
+        total={sum}
+      />
      
     return (
       <div className="App">
       <div className="header-container">
         <aside>
-          <ExamList 
-            dataCarryName={names}
-            removeExams={removeExams}
-            total={sum}
-            />
-            {console.log('STATE:' + this.props.state)}
+          { examListComponent }
+          {console.log('STATE:' + this.props.state)}
         </aside>
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>

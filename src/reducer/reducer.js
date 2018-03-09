@@ -25,14 +25,11 @@ export default function Action( state = initialState, action ) {
         case ActionTypes.REMOVE_EXAMS:
            return state.filter(exam => exam.name === action.name)
 
-        // case ActionTypes.REMOVE_INDVIDUAL_EXAM:
-        //     return { ...state.slice(0, action.index) }
-            
-            
-            
+        case ActionTypes.REMOVE_INDVIDUAL_EXAM:
+            return [
+                ...state.map( exam => exam).splice(action.index, 1, -1)
+            ] 
         default: {return state};
     }   
 } 
 
-// ...state.slice(0, action.index),
-// ...state.slice(action.index + 1)

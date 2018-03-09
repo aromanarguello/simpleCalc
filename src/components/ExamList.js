@@ -28,31 +28,3 @@ ExamList.propTypes = {
 }
 
 export default ExamList;
-
-// const style = {
-//     marginLeft: 10,
-//   };
-
-// export default class ExamList extends Component {
-
-//     static propTypes = {
-
-//     };
-
-    
-//     render() {
-//         return (
-//             <MuiThemeProvider>
-//              <div className="side-exam-view">
-//              <Paper zDepth={2}>
-//                 <h1> Carrito </h1>
-//                 {this.props.total.toFixed(2)}
-//                 {this.props.dataCarryName}
-//                 {console.log(this.props.removeIndividualExams)} 
-//             </Paper>
-//         </div>
-//         </MuiThemeProvider>
-//         );
-        
-//     }
-// }
