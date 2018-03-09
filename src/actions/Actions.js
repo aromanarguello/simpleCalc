@@ -8,10 +8,10 @@ export const updateEstimator = (total) => {
     }
 }
 
-export const clearTotal = state => {
+export const clearTotal = price => {
     return {
         type: ActionTypes.CLEAR_TOTAL,
-        state: { total: ''}
+        price
     }
 }
 
@@ -33,6 +33,13 @@ export const addPrices = (price, name) => {
 export const removeExams = state => {
     return {
         type: ActionTypes.REMOVE_EXAMS,
+        state
+    }
+}
+
+export const removeIndividualExams = (state) => {
+    return {
+        type: ActionTypes.REMOVE_INDVIDUAL_EXAM,
         state
     }
 }

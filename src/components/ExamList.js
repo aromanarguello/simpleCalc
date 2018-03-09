@@ -7,46 +7,52 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import * as ActionCreators from '../actions/Actions'
 
-const style = {
-    marginLeft: 10,
-  };
-
-export default class ExamList extends Component {
-
-    static propTypes = {
-        dataCarryName: PropTypes.array.isRequired,
-        removeExams: PropTypes.func.isRequired,
-        total: PropTypes.number.isRequired,
-        data: PropTypes.array.isRequired
-    };
-
-    
-    render() {
-        return (
-            <MuiThemeProvider>
+const ExamList = props => {
+    return (
+        <MuiThemeProvider>
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
-                {this.props.total.toFixed(2)}
-                {this.props.dataCarryName} <button onClick={() => this.props.removeExams(this.props.data)} >X</button>
-                {/* {this.names.map((i, k) => {
-                    return(
-                        <ul key={k}
-                             className="exam-list-names">
-                            <li key={k}>
-                            <TextField 
-                            disabled={true}
-                            defaultValue={i}/>
-                            <button onClick={() => this.props.removeExams(({i}))}>X</button>
-                            </li>
-                            <Divider />
-                        </ul>
-                    )
-                })} */}
+                {props.total.toFixed(2)}
+                {props.dataCarryName}
             </Paper>
         </div>
         </MuiThemeProvider>
-        );
-        
-    }
+    );
 }
+
+ExamList.propTypes = {
+    dataCarryName: PropTypes.array.isRequired,
+    removeExams: PropTypes.func.isRequired,
+    total: PropTypes.number.isRequired,
+}
+
+export default ExamList;
+
+// const style = {
+//     marginLeft: 10,
+//   };
+
+// export default class ExamList extends Component {
+
+//     static propTypes = {
+
+//     };
+
+    
+//     render() {
+//         return (
+//             <MuiThemeProvider>
+//              <div className="side-exam-view">
+//              <Paper zDepth={2}>
+//                 <h1> Carrito </h1>
+//                 {this.props.total.toFixed(2)}
+//                 {this.props.dataCarryName}
+//                 {console.log(this.props.removeIndividualExams)} 
+//             </Paper>
+//         </div>
+//         </MuiThemeProvider>
+//         );
+        
+//     }
+// }

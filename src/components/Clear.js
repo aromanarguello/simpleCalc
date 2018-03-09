@@ -9,13 +9,7 @@ import App from '../Containers/App'
 const style = {
     margin: 12,
 };
-
-export default class Clear extends Component {
-    static propTypes = {
-        clearTotal: PropTypes.func.isRequired,
-    }
-      
-    render() {
+const Clear = props => {
         return (
             <MuiThemeProvider>
             <div className="clear-btn">        
@@ -25,11 +19,15 @@ export default class Clear extends Component {
                     labelColor="white"
                     primary={false} 
                     style={style}
-                    onClick={() => this.props.clearTotal()}
+                    onClick={props.clearTotal}
                     />
             </div>
             </MuiThemeProvider>
         );
     }
+
+Clear.propTypes = {
+    clearTotal: PropTypes.func.isRequired,
 }
 
+export default Clear;
