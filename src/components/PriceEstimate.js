@@ -25,9 +25,7 @@ export default class PriceEstimate extends Component {
     prices = Data
 
     static propTypes = {
-        updateEstimator: PropTypes.func.isRequired,
         addPrices: PropTypes.func.isRequired,
-        dataCarryName: PropTypes.func.isRequired,
     }
 
     render() {

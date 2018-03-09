@@ -26,14 +26,10 @@ class App extends Component {
      const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
      // names maps to produce each name on the side list when triggered by add price
      const names = this.props.state.map((exam, index) =>
-     <p key={index}> {exam.name} <span onClick={() => removeIndividualExams(exam.index)}> --X</span> </p>)
+     <p key={index}> {exam.name} <span onClick={() => removeIndividualExams(index)}> --X</span> </p>)
 
     const priceComponent = 
-      <PriceEstimate 
-        updateEstimator={updateEstimator}
-        dataCarryName={dataCarryName}
-        addPrices={addPrices}
-      />
+      <PriceEstimate addPrices={addPrices} />
 
     const clearComponent = 
       <Clear clearTotal={clearTotal} />
@@ -46,7 +42,9 @@ class App extends Component {
       />
      
     return (
+
       <div className="App">
+            {console.log(this.props.state)}
       <div className="header-container">
         <aside>
           { examListComponent }
@@ -55,7 +53,7 @@ class App extends Component {
         <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
         <div className='price-container'>
         {/* displays the total sum of added prices */}
-        {sum.toFixed(2)}
+        { sum.toFixed(2) }
         </div>
          { clearComponent }
       </div>

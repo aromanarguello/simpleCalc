@@ -15,18 +15,19 @@ export const clearTotal = price => {
     }
 }
 
-export const dataCarry = (name) => {
+export const dataCarry = name => {
     return {
         type: ActionTypes.DATA_NAME,
         name
     }
 }
 
-export const addPrices = (price, name) => {
+export const addPrices = (price, name, index) => {
     return{
         type: ActionTypes.ADD_PRICES,
         price,
-        name
+        name,
+        index
     }
 }
 
