@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import * as ActionCreators from '../actions/Actions'
@@ -13,8 +12,8 @@ const ExamList = props => {
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
-                {props.total.toFixed(2)}
-                {props.dataCarryName}
+                { props.total.toFixed(2) }
+                { props.dataCarryName }
             </Paper>
         </div>
         </MuiThemeProvider>

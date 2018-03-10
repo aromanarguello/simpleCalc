@@ -27,9 +27,9 @@ export default function Action( state = initialState, action ) {
 
         case ActionTypes.REMOVE_INDVIDUAL_EXAM:
             return [
-                ...state.splice(action.index, 1)
-            ] 
+                ...state.slice(0, action.index),
+                ...state.slice(action.index + 1)
+            ]
         default: {return state};
     }   
 } 
-
