@@ -12,7 +12,7 @@ const ExamList = props => {
              <div className="side-exam-view">
              <Paper zDepth={2}>
                 <h1> Carrito </h1>
-                { props.total.toFixed(2) }
+                { props.total.toFixed(2) } $
                 { props.dataCarryName }
             </Paper>
         </div>

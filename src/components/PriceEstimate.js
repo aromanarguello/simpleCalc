@@ -54,7 +54,7 @@ export default class PriceEstimate extends Component {
                                         primary={true} 
                                         style={style}
                                         type="submit"
-                                        // functions allows me to pass in the (item price as parameter)   
+                                        // functions allows me to pass in the (item price and name as parameter)   
                                         onClick={() =>this.props.addPrices(item.price, item.name)}
                                         />
                                           
