@@ -48,22 +48,21 @@ class App extends Component {
 
       <div className="App">
             {console.log(this.props.state)}
-      <div className="header-container">
-        <aside>
-          { examListComponent }
-          {console.log('STATE:' + this.props.state)}
-        </aside>
-        <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
-        <div className='price-container'>
-        {/* displays the total sum of added prices */}
-        { sum.toFixed(2) }
+        <div className="header-container">
+          <aside>
+            { examListComponent }
+            {console.log('STATE:' + this.props.state)}
+          </aside>
+          <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
+          <div className='price-container'>
+            {/* displays the total sum of added prices */}
+            { sum.toFixed(2) }
+          </div>
+          { clearComponent }
         </div>
-         { clearComponent }
-      </div>
-        <div className="main-container">
-          { priceComponent }
-        </div>
-    
+          <div className="main-container">
+            { priceComponent }
+          </div>
       </div>
     );
   };
