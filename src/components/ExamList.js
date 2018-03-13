@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import * as ActionCreators from '../actions/Actions'
+
 
 const ExamList = props => {
     return (
@@ -20,10 +20,10 @@ const ExamList = props => {
     );
 }
 
-ExamList.propTypes = {
-    dataCarryName: PropTypes.array.isRequired,
-    removeExams: PropTypes.func.isRequired,
-    total: PropTypes.number.isRequired,
-}
+// ExamList.propTypes = {
+//     dataCarryName: PropTypes.array.isRequired,
+//     removeExams: PropTypes.func.isRequired,
+//     total: PropTypes.number.isRequired,
+// }
 
 export default ExamList;

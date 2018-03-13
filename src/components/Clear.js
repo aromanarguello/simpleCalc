@@ -6,9 +6,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import App from '../Containers/App'
 
+
 const style = {
     margin: 12,
 };
+
 const Clear = props => {
         return (
             <MuiThemeProvider>
@@ -25,9 +27,5 @@ const Clear = props => {
             </MuiThemeProvider>
         );
     }
-
-Clear.propTypes = {
-    clearTotal: PropTypes.func.isRequired,
-}
 
 export default Clear;

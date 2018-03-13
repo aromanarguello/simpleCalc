@@ -15,6 +15,7 @@ import {
   import TextField from 'material-ui/TextField';
   import SearchBar from './SearchBar'
 
+
 const style = {
     margin: 12,
   };
@@ -35,7 +36,7 @@ export default class PriceEstimate extends Component {
     // (e) takes the onchange input value from text field -> assigns it to nameTerm -> the state is filtered and nameTerm is used as a parameter to match the exam being filtered -> prices key is assigned the result of examNameFilter
     matchTerms = (e) => {
         const nameTerm = e.target.value
-        if(nameTerm !== "") {
+        if(nameTerm !== e) {
             const examNameFilter = this.state.prices.filter(exam => exam.name.match(nameTerm))
             this.setState({prices: examNameFilter})
         }
@@ -46,21 +47,19 @@ export default class PriceEstimate extends Component {
     }
 
     render() {
-        return (
-            
+        return (     
             <MuiThemeProvider>
                 <div className="table-container">
                 <SearchBar matchTerms={this.matchTerms}/>
                 {console.log(this.state.prices)}
                     <Table multiSelectable={true} selectable={true} >
                         <TableBody>
-                        {this.state.prices.map((item,key) => {
+                        {this.state.prices.map((item, key) => {
                             return (
                                 <TableRow key={key}>
                                     <TableRowColumn 
                                         className="exam-cells">
                                         {item.name}
-                                        {console.log(typeof(item.price))}
                                     </TableRowColumn>
                                     <TableRowColumn className="price-cells" >
                                         <RaisedButton 

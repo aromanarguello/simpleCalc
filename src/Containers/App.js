@@ -8,8 +8,8 @@ import '../SmallLogo.png'
 import PriceEstimate from '../components/PriceEstimate'
 import Clear from '../components/Clear'
 import ExamList from '../components/ExamList'
+import Total from '../components/Total'
 import Data from '../data/data'
-
 
 
 class App extends Component {
@@ -29,7 +29,11 @@ class App extends Component {
      // removeIndividualExams removes the exam name and price by clicking on the 'X'
      const names = this.props.state.map((exam, index) =>
      <p key={index}> {exam.name} - {exam.price} $ 
-      <span className="delete-side-marker" onClick={() => removeIndividualExams(index)}>   X</span> 
+      <span 
+        className="delete-side-marker" 
+        onClick={() => removeIndividualExams(index)}>
+        X
+      </span> 
      </p>)
 
     const priceComponent = 
@@ -44,31 +48,31 @@ class App extends Component {
         removeExams={removeExams}
         total={sum}
       />
+
+    const totalComponent = 
+      <Total 
+      total={sum}/>
      
     return (
-
       <div className="App">
-            {console.log(this.props.state)}
-        <div className="header-container">
-          <aside>
+        <aside>
             { examListComponent }
-            {console.log('STATE:' + this.props.state)}
-          </aside>
+        </aside>
+        <div className="header-container">
           <img src={require('../SmallLogo.png')} alt="logo" id="logo" />
           <div className='price-container'>
             {/* displays the total sum of added prices */}
-            { sum.toFixed(2) }
+            { totalComponent }
           </div>
           { clearComponent }
         </div>
-          <div className="main-container">
-            { priceComponent }
-          </div>
+        <div className="main-container">
+        {/* Component that displays list of exmas */}
+          { priceComponent }
+        </div>
       </div>
     );
   };
-
-
 }
 
 function mapStateToProps (state, name){
@@ -76,6 +80,5 @@ function mapStateToProps (state, name){
       state
   };
 }
-
 
 export default connect(mapStateToProps)(App)

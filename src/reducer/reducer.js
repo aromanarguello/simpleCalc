@@ -6,7 +6,6 @@ import data from '../data/data'
 const initialState = []
 
 
-
 export default function Action( state = initialState, action ) {
     switch(action.type) {
        

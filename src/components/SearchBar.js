@@ -7,7 +7,6 @@ import TextField from 'material-ui/TextField'
 import * as ActionCreators from '../actions/Actions'
 
 
-
 export default class SearchBar extends Component {
     
     static propTypes = {
@@ -19,7 +18,6 @@ export default class SearchBar extends Component {
         return (
         <MuiThemeProvider>
             <TextField hintText="Busque su examen aqui" onChange={this.props.matchTerms} />
-            {console.log(this.state)}
         </MuiThemeProvider>
         )
     }
