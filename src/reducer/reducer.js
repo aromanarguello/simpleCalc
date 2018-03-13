@@ -25,12 +25,16 @@ export default function Action( state = initialState, action ) {
         case ActionTypes.REMOVE_EXAMS:
            return state.filter(exam => exam.name === action.name)
 
-        case 
-        ActionTypes.REMOVE_INDVIDUAL_EXAM:
+        case ActionTypes.REMOVE_INDVIDUAL_EXAM:
         // returns [[0, upToIndex], [fromIndex ]] -> everything from 0 up to index of item and everything after the index item. Excludes the indexed item
             return [
                 ...state.slice(0, action.index),
                 ...state.slice(action.index + 1)
+            ]
+        case ActionTypes.SEARCH_FILTER:
+            return [
+                data.slice(0, action.index),
+                data.slice(action.index + 1)
             ]
         default: {return state};
     }   

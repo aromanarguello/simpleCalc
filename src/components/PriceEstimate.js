@@ -20,26 +20,37 @@ const style = {
   };
 
 export default class PriceEstimate extends Component {
-    /** Constructor to store exam name and price to export to store */
-    
+
+
+    // added state in order to render search filter. When Textfield is empty the whole state will be displayed. As keys are entered the list reduces
+    state = {
+        prices: Data
+    }    
     // imports the JSON object from data.js file and assisngs it to the variable price
-    // Data is an array thus should be treated as like.s
-    prices = Data
+    // Data is an array thus should be treated as like.
 
     static propTypes = {
         addPrices: PropTypes.func.isRequired,
     }
 
+    matchTerms = (e) => {
+        const nameTerm = e.target.value
+        const examNameFilter = this.state.prices.filter(exam => exam.name.match(nameTerm))
+        this.setState({prices: examNameFilter})
+    }
+
     render() {
         return (
+            
             <MuiThemeProvider>
                 <div className="table-container">
-                    <SearchBar data={this.prices} />
+                <TextField hintText="Busque su examen aqui" onChange={this.matchTerms} />
+                {console.log(this.state.prices)}
                     <Table multiSelectable={true} selectable={true} >
                         <TableBody>
-                        {this.prices.map((item, key) => {
+                        {this.state.prices.map((item,key) => {
                             return (
-                                <TableRow key = {key} >
+                                <TableRow key={key}>
                                     <TableRowColumn 
                                         className="exam-cells">
                                         {item.name}
@@ -54,8 +65,7 @@ export default class PriceEstimate extends Component {
                                             type="submit"
                                             // functions allows me to pass in the (item price and name as parameter)   
                                             onClick={() =>this.props.addPrices(item.price, item.name)}
-                                            />
-                                            
+                                            />    
                                     </TableRowColumn>                               
                                 </TableRow>
                             )

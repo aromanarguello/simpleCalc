@@ -2,40 +2,49 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete'
+import TextField from 'material-ui/TextField'
 import * as ActionCreators from '../actions/Actions'
 
 
 
 export default class SearchBar extends Component {
+    
+    state = {
+        dataSource: [],
+    };
+
+    // handleUpdateInput = value => {
+    //     this.setState({
+    //         dataSource: [
+    //             value,
+    //             value + value, 
+    //             value + value + value,
+    //         ]
+    //     });
+    // };
+
     static propTypes = {
         data: PropTypes.array.isRequired,
     }
-
-
-    searchTerm = e => {
-        const name = e.target.value
-        console.log(name)
-    }
-
+  
+    matchTerms = (e) => {
+        const nameTerm = e.target.value
+        const examNameFilter = this.props.data.filter(exam => exam.name.match(nameTerm))
+        this.setState({examNameFilter})
+    }     
     
-    // const examNameFilter = props.data.map(exam => exam.name);
-    //     // const examMatch = examNameFilter.match(/[A-Za-z]/)
-    //     console.log('this is from searchbar: ' + typeof(examNameFilter))
     render() {
-        // console.log(name)
-        console.log('propTypes: ' + this.props.data)
-
         return (
         <MuiThemeProvider>
-            <TextField hintText="Busque su examen aqui" onChange={this.searchTerm} />
+            {/* <AutoComplete
+                hintText="Busque aqui"
+                dataSource={this.props.data.map(exam => exam.name)}
+                onUpdateInput={this.handleUpdateInput}
+                /> */}
+            <TextField hintText="Busque su examen aqui" onChange={this.matchTerms} />
+            {console.log(this.state)}
         </MuiThemeProvider>
         )
     }
 }
-
-
-// onNameChange = e => {
-//     const name = e.target.value;
-//     this.setState({ name: name });
-// };
