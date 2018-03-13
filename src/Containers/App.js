@@ -22,7 +22,6 @@ class App extends Component {
     const addPrices = bindActionCreators(ActionCreators.addPrices, dispatch);
     const removeExams = bindActionCreators(ActionCreators.removeExams, dispatch)
     const removeIndividualExams = bindActionCreators(ActionCreators.removeIndividualExams, dispatch)
-    const searchFilter = bindActionCreators(ActionCreators.searchFilter, dispatch)
 
      // sum adds each exam through reduce to produce a total
      const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
@@ -32,7 +31,6 @@ class App extends Component {
      <p key={index}> {exam.name} - {exam.price} $ 
       <span className="delete-side-marker" onClick={() => removeIndividualExams(index)}>   X</span> 
      </p>)
-     
 
     const priceComponent = 
       <PriceEstimate addPrices={addPrices} />

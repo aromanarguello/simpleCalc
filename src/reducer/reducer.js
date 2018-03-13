@@ -31,11 +31,6 @@ export default function Action( state = initialState, action ) {
                 ...state.slice(0, action.index),
                 ...state.slice(action.index + 1)
             ]
-        case ActionTypes.SEARCH_FILTER:
-            return [
-                data.slice(0, action.index),
-                data.slice(action.index + 1)
-            ]
         default: {return state};
     }   
 } 

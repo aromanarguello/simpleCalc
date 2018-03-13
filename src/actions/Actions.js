@@ -44,11 +44,3 @@ export const removeIndividualExams = (index) => {
         index
     }
 }
-
-export const searchFilter = data => {
-    return {
-        type: ActionTypes.SEARCH_FILTER,
-        data
-    }
-}
-

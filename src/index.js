@@ -13,18 +13,9 @@ import registerServiceWorker from './registerServiceWorker';
 const store = createStore(
     Reducer,
 );
-
-console.log(store.getState())
-
-
 render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
 );
-
-
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();

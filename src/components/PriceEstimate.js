@@ -21,7 +21,6 @@ const style = {
 
 export default class PriceEstimate extends Component {
 
-
     // added state in order to render search filter. When Textfield is empty the whole state will be displayed. As keys are entered the list reduces
     state = {
         prices: Data
@@ -33,10 +32,17 @@ export default class PriceEstimate extends Component {
         addPrices: PropTypes.func.isRequired,
     }
 
+    // (e) takes the onchange input value from text field -> assigns it to nameTerm -> the state is filtered and nameTerm is used as a parameter to match the exam being filtered -> prices key is assigned the result of examNameFilter
     matchTerms = (e) => {
         const nameTerm = e.target.value
-        const examNameFilter = this.state.prices.filter(exam => exam.name.match(nameTerm))
-        this.setState({prices: examNameFilter})
+        if(nameTerm !== "") {
+            const examNameFilter = this.state.prices.filter(exam => exam.name.match(nameTerm))
+            this.setState({prices: examNameFilter})
+        }
+        // re-renders the complete Data
+        if(nameTerm === "") {
+            this.setState({prices: Data})
+        }
     }
 
     render() {
@@ -44,7 +50,7 @@ export default class PriceEstimate extends Component {
             
             <MuiThemeProvider>
                 <div className="table-container">
-                <TextField hintText="Busque su examen aqui" onChange={this.matchTerms} />
+                <SearchBar matchTerms={this.matchTerms}/>
                 {console.log(this.state.prices)}
                     <Table multiSelectable={true} selectable={true} >
                         <TableBody>
