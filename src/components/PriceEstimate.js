@@ -48,9 +48,9 @@ export default class PriceEstimate extends Component {
 
     render() {
         return (     
-            <MuiThemeProvider>
+            <MuiThemeProvider>    
                 <div className="table-container">
-                <SearchBar matchTerms={this.matchTerms}/>
+                <SearchBar className="search-bar" matchTerms={this.matchTerms}/>
                 {console.log(this.state.prices)}
                     <Table multiSelectable={true} selectable={true} >
                         <TableBody>

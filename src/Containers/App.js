@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import * as ActionCreators from '../actions/Actions'
 import '../App.css';
 import '../SmallLogo.png'
+import Ionicon from 'react-ionicons'
 import PriceEstimate from '../components/PriceEstimate'
 import Clear from '../components/Clear'
 import ExamList from '../components/ExamList'
@@ -23,18 +24,23 @@ class App extends Component {
     const removeExams = bindActionCreators(ActionCreators.removeExams, dispatch)
     const removeIndividualExams = bindActionCreators(ActionCreators.removeIndividualExams, dispatch)
 
-     // sum adds each exam through reduce to produce a total
-     const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
-     // names maps to produce each name on the side list when triggered by add price
-     // removeIndividualExams removes the exam name and price by clicking on the 'X'
-     const names = this.props.state.map((exam, index) =>
-     <p key={index}> {exam.name} - {exam.price} $ 
-      <span 
-        className="delete-side-marker" 
-        onClick={() => removeIndividualExams(index)}>
-        X
-      </span> 
-     </p>)
+    const style = {
+      marginLeft: 12,
+      marginTop: 5
+  }
+
+    // sum adds each exam through reduce to produce a total
+    const sum = this.props.state.reduce((sum, exam) => sum + exam.price, 0)
+    // names maps to produce each name on the side list when triggered by add price
+    // removeIndividualExams removes the exam name and price by clicking on the 'X'
+    const names = this.props.state.map((exam, index) =>
+      <p key={index}> {exam.name} - {exam.price} $ 
+        <span 
+          className="delete-side-marker" 
+          onClick={() => removeIndividualExams(index)}>
+          <Ionicon icon="ios-remove-circle" fontSize="22px" color="red" style={style}/>
+        </span> 
+      </p>)
 
     const priceComponent = 
       <PriceEstimate addPrices={addPrices} />

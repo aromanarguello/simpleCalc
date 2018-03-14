@@ -24,6 +24,10 @@ table {
   justify-content: center;
 }
 
+.table-container {
+  height: auto;
+}
+
 .price-estimate-container {
   display: flex;
   justify-content: center;
@@ -66,7 +70,7 @@ aside {
 .side-exam-view {
   width: 100%;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .exam-list-names {
@@ -74,6 +78,7 @@ aside {
   display: flex;
   justify-self: center;
   margin: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ul {

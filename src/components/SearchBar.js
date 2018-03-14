@@ -6,6 +6,9 @@ import AutoComplete from 'material-ui/AutoComplete'
 import TextField from 'material-ui/TextField'
 import * as ActionCreators from '../actions/Actions'
 
+const style = {
+    width: 990,
+}
 
 export default class SearchBar extends Component {
     
@@ -17,7 +20,10 @@ export default class SearchBar extends Component {
     render() {
         return (
         <MuiThemeProvider>
-            <TextField hintText="Busque su examen aqui" onChange={this.props.matchTerms} />
+            <TextField 
+                hintText="Busque su examen aqui" 
+                onChange={this.props.matchTerms} className="search-bar"
+                style={style} />
         </MuiThemeProvider>
         )
     }

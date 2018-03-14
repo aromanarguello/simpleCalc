@@ -19,11 +19,4 @@ const ExamList = props => {
         </MuiThemeProvider>
     );
 }
-
-// ExamList.propTypes = {
-//     dataCarryName: PropTypes.array.isRequired,
-//     removeExams: PropTypes.func.isRequired,
-//     total: PropTypes.number.isRequired,
-// }
-
 export default ExamList;
