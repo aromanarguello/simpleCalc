@@ -37,7 +37,8 @@ export default class PriceEstimate extends Component {
     matchTerms = (e) => {
         const nameTerm = e.target.value
         if(nameTerm !== e) {
-            const examNameFilter = this.state.prices.filter(exam => exam.name.match(nameTerm))
+            // case insensitive
+            const examNameFilter = this.state.prices.filter(exam => exam.name.toLowerCase().match(nameTerm.toLowerCase()))
             this.setState({prices: examNameFilter})
         }
         // re-renders the complete Data

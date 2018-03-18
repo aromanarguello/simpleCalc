@@ -26,7 +26,6 @@ class App extends Component {
 
     const style = {
       marginLeft: 12,
-      marginTop: 5
   }
 
     // sum adds each exam through reduce to produce a total
@@ -34,13 +33,23 @@ class App extends Component {
     // names maps to produce each name on the side list when triggered by add price
     // removeIndividualExams removes the exam name and price by clicking on the 'X'
     const names = this.props.state.map((exam, index) =>
-      <p key={index}> {exam.name} - {exam.price} $ 
-        <span 
-          className="delete-side-marker" 
-          onClick={() => removeIndividualExams(index)}>
-          <Ionicon icon="ios-remove-circle" fontSize="22px" color="red" style={style}/>
-        </span> 
-      </p>)
+    <table className="btn-delete-examlist-container" key={index}>
+      <tr>{exam.name} - {exam.price}</tr>
+      <tr className="icon-delete-examlist">
+        <Ionicon
+          icon="ios-remove-circle" 
+          fontSize="18px" 
+          color="red" 
+          onClick={() => removeIndividualExams(index)} style={style} />
+      </tr>
+    </table>)
+      // <p key={index}> {exam.name} - {exam.price} $ 
+      //   <span 
+      //     className="delete-side-marker" 
+      //     onClick={() => removeIndividualExams(index)}>
+      //     <Ionicon icon="ios-remove-circle" fontSize="22px" color="red" style={style}/>
+      //   </span> 
+      // </p>)
 
     const priceComponent = 
       <PriceEstimate addPrices={addPrices} />
