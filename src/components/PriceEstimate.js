@@ -22,10 +22,9 @@ const style = {
 
 export default class PriceEstimate extends Component {
 
-    // added state in order to render search filter. When Textfield is empty the whole state will be displayed. As keys are entered the list reduces
     state = {
-        prices: Data
-    }    
+       prices: Data
+    }
     // imports the JSON object from data.js file and assisngs it to the variable price
     // Data is an array thus should be treated as like.
 
@@ -47,15 +46,17 @@ export default class PriceEstimate extends Component {
         }
     }
 
+    
+
     render() {
         return (     
             <MuiThemeProvider>    
                 <div className="table-container">
                 <SearchBar className="search-bar" matchTerms={this.matchTerms}/>
-                {console.log(this.state.prices)}
                     <Table multiSelectable={true} selectable={true} >
                         <TableBody>
                         {this.state.prices.map((item, key) => {
+                        
                             return (
                                 <TableRow key={key}>
                                     <TableRowColumn 
